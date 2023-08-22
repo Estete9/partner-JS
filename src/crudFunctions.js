@@ -46,10 +46,7 @@ export default class crudFunctions {
     this.tasksList.splice(index - 1, 1);
 
     // update array's index and saves to local storage
-    for (let i = 0; i < this.tasksList.length; i += 1) {
-      this.tasksList[i].index = i + 1;
-    }
-
+    this.tasksList.forEach((task, index) => task.index = index + 1)
     localStorage.setItem('tasksStorage', JSON.stringify(this.tasksList));
 
     updateUI(this.tasksList, tasksCollection);
