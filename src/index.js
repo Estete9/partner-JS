@@ -13,7 +13,7 @@ const taskInput = document.querySelector('#input-section > input');
 const clearCompletedBtn = document.getElementById('clear-completed-btn');
 const localData = localStorage.getItem('tasksStorage');
 
-let tasks = JSON.parse(localData) || [];
+const tasks = JSON.parse(localData) || [];
 
 const tasksCollection = new TasksCollection(tasks);
 clearCompletedBtn.onclick = () => {

@@ -4,13 +4,13 @@ import updateUI from './updateUI.js';
 export default class crudFunctions {
   constructor() {
     const localData = localStorage.getItem('tasksStorage');
-    let local = JSON.parse(localData) || [];
+    const local = JSON.parse(localData) || [];
     this.tasksList = local;
   }
 
   makeIndex = () => {
     const localData = localStorage.getItem('tasksStorage');
-     let local = JSON.parse(localData) || [];
+    const local = JSON.parse(localData) || [];
     this.tasksList = local;
 
     if (this.tasksList.length <= 0) {
@@ -23,7 +23,7 @@ export default class crudFunctions {
   addTask = (taskDescription, tasksCollection) => {
     const localData = localStorage.getItem('tasksStorage');
 
-     let local = JSON.parse(localData) || [];
+    const local = JSON.parse(localData) || [];
     this.tasksList = local;
     const task = new Task(taskDescription, this.makeIndex(this.tasksList));
 
@@ -36,7 +36,7 @@ export default class crudFunctions {
 
   deleteTask = (task, tasksCollection) => {
     const localData = localStorage.getItem('tasksStorage');
-     let local = JSON.parse(localData) || [];
+    const local = JSON.parse(localData) || [];
     this.tasksList = local;
 
     // locate the index of the deleted task with the eventId
@@ -46,7 +46,7 @@ export default class crudFunctions {
     this.tasksList.splice(index - 1, 1);
 
     // update array's index and saves to local storage
-    this.tasksList.forEach((task, index) => task.index = index + 1)
+    this.tasksList.forEach((task, index) => { task.index = index + 1; });
     localStorage.setItem('tasksStorage', JSON.stringify(this.tasksList));
 
     updateUI(this.tasksList, tasksCollection);
